@@ -81,7 +81,7 @@ public class OreMagnetItem extends Item implements CustomEnchantingBehaviorItem,
 	public void releaseUsing(ItemStack stack, Level world, LivingEntity living, int useRemaining) {
 		int useTime = this.getUseDuration(stack) - useRemaining;
 
-		if (!world.isClientSide && useTime > 10) {
+		if (!world.isClientSide && useTime > 5) {
 			int moved = doMagnet(world, living, 0, 0);
 
 			if (moved == 0) {
@@ -137,7 +137,7 @@ public class OreMagnetItem extends Item implements CustomEnchantingBehaviorItem,
 	 */
 	private int doMagnet(Level world, LivingEntity living, float yawOffset, float pitchOffset) {
 		// find vector 32 blocks from look
-		double range = 32.0D;
+		double range = 64.0D;
 		Vec3 srcVec = new Vec3(living.getX(), living.getY() + living.getEyeHeight(), living.getZ());
 		Vec3 lookVec = getOffsetLook(living, yawOffset, pitchOffset);
 		Vec3 destVec = srcVec.add(lookVec.x * range, lookVec.y * range, lookVec.z * range);
@@ -224,7 +224,7 @@ public class OreMagnetItem extends Item implements CustomEnchantingBehaviorItem,
 		}
 
 		// let's limit it to 24 blocks at a time
-		if (veinBlocks.size() >= 24) {
+		if (veinBlocks.size() >= 48) {
 			return false;
 		}
 
