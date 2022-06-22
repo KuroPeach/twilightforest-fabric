@@ -20,7 +20,7 @@ public class MineLogCoreBlock extends SpecialMagicLogBlock {
 	 */
 	@Override
 	void performTreeEffect(Level world, BlockPos pos, Random rand) {
-		BlockPos dPos = WorldUtil.randomOffset(rand, pos, 32);
+		BlockPos dPos = WorldUtil.randomOffset(rand, pos, 64);
 		int moved = OreMagnetItem.doMagnet(world, pos, dPos);
 
 		if (moved > 0) {
